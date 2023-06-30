@@ -1,0 +1,35 @@
+html,
+body {
+    height: 100%;
+    text-align: center;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin .top {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin .mid {
+    border-radius: 0 !important;
+    margin-bottom: -1px;
+}
+
+.form-signin .bottom {
+    margin-bottom: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+input::placeholder {
+    color: rgb(168, 168, 168) !important;
+}
