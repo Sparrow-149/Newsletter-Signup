@@ -9,6 +9,8 @@ const app = express();
 
 // telling the app to use the body-parser middleware and to parse the body as URL encoded data
 app.use(bodyParser.urlencoded({extended: true}));
+
+// to set our app to use static pages such as css files which are stored in public folder
 app.use(express.static('public'));
 
 // GET request to the root route
@@ -18,11 +20,14 @@ app.get("/", function(req, res) {
 
 // POST request to the root route
 app.post("/", function(req, res) {
+
+    // creating variables to store the data from the form
     const firstName = req.body.firstname;
     const lastName = req.body.lastname;
     const email = req.body.email;
     // console.log(firstName, lastName, email);  
 
+    // creating a JS object to store the data
     const data = {
         members: [
             {
@@ -36,12 +41,18 @@ app.post("/", function(req, res) {
         ]
     }
 
+    // converting the JS object to JSON
     const JSONData  = JSON.stringify(data);
+    // url for the mailchimp API
     const url = "https://us9.api.mailchimp.com/3.0/lists/2d080f8559";
+
+    // options for the https request
     const options = {
         method: "POST",
         auth: "aman:1f22356471e8206a30d720f0f19905ac-us9"
     };
+
+    // making the https request
     const request = https.request(url, options, function(response) {
         if(response.statusCode === 200)
         {
